@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 
-export default function SpotifyOAuth() {
+export default function Spotify() {
     useEffect(() => {
         let queryParameters = new URLSearchParams(window.location.search);
 
@@ -54,7 +54,14 @@ export default function SpotifyOAuth() {
         <>
             <SpotifyPlayer
                 token={localStorage.getItem("spotifyCredentials") || ""}
-                uris={["spotify:artist:6HQYnRM4OzToCYPpVBInuU"]}
+                autoPlay={true}
+                styles={{
+                    loaderSize: "100%",
+                }}
+                syncExternalDevice={true}
+                showSaveIcon={true}
+                name={"Mosaic"}
+                magnifySliderOnHover={true}
             />
         </>
     );

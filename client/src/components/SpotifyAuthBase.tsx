@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import SpotifyOAuth from "./SpotifyOAuth";
+import Spotify from "./Spotify";
 export default function SpotifyAuthBase() {
     useEffect(() => {
         if (localStorage.getItem("startedAuthProcess") === "true") return;
@@ -21,7 +21,7 @@ export default function SpotifyAuthBase() {
 
     return (
         <>
-            <SpotifyOAuth />
+            <Spotify />
         </>
     );
 }

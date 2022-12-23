@@ -1,24 +1,36 @@
-import { useEffect, useState } from "react";
-import SpotifyAuthBase from "../components/SpotifyAuthBase";
-
+import Spotify from "../components/SpotifyAuthBase";
+import SunMoon from "../components/Weather";
 export default function Dashboard() {
     return (
         <>
-            {/*<SpotifyAuth spotifyCredentials={spotifyCredentials} />
-            <NowPlaying spotifyCredentials={spotifyCredentials} />*/}
-            <SpotifyAuthBase />
             <div className="WidgetArea">
-                <div className="Widget h-96">
-                    <p className="WidgetContent"></p>
-                    <p className="WidgetDescription">
-                        Books Gifted (This Year)
+                <div
+                    className="Widget"
+                    style={{ width: "40em", height: "9em" }}
+                >
+                    <p
+                        className="WidgetContent"
+                        style={{
+                            paddingBottom: ".4em",
+                            display: "grid",
+                            placeContent: "center",
+                        }}
+                    >
+                        Now Playing
                     </p>
+                    <Spotify />
                 </div>
-
-                <div className="Widget h-24">
-                    <p className="WidgetContent"></p>
-                    <p className="WidgetDescription">Books Gifted (All Time)</p>
-                </div>
+            </div>
+            <div
+                className="Widget"
+                style={{
+                    width: "17em",
+                    right: "2em",
+                    position: "absolute",
+                    top: "2em",
+                }}
+            >
+                <SunMoon />
             </div>
         </>
     );
