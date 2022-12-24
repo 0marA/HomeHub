@@ -1,12 +1,31 @@
+import { useState } from "react";
 import lampOn from "../imgs/CustomIcons/lampOn.png";
 import lampOff from "../imgs/CustomIcons/lampOff.png";
-
+import axios from "axios";
 export default function Tuya() {
-    const lampsOn = () => {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/lampsOn`);
+    const [successIcon, setSuccessIcon] = useState(false);
+    const lampsOn = async () => {
+        const request = await axios.get(
+            `${process.env.REACT_APP_CLIENT_URL}/.netlify/functions/lampsOn`
+        );
+        console.log(request.data);
+        if (request.data.message === "success") {
+            setSuccessIcon(true);
+            setTimeout(() => {
+                setSuccessIcon(false);
+            }, 2500);
+        }
     };
-    const lampsOff = () => {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/lampsOff`);
+    const lampsOff = async () => {
+        const request = await axios.get(
+            `${process.env.REACT_APP_CLIENT_URL}/.netlify/functions/lampsOff`
+        );
+        if (request.data.message === "success") {
+            setSuccessIcon(true);
+            setTimeout(() => {
+                setSuccessIcon(false);
+            }, 2500);
+        }
     };
 
     return (
@@ -27,7 +46,12 @@ export default function Tuya() {
                         src={lampOff}
                         alt="lamp"
                         onClick={lampsOff}
-                        style={{ width: "90px", height: "90px", position: "relative", left: ".4em" }}
+                        style={{
+                            width: "90px",
+                            height: "90px",
+                            position: "relative",
+                            left: ".4em",
+                        }}
                     />
                 </button>
                 <button>
@@ -39,10 +63,34 @@ export default function Tuya() {
                             width: "90px",
                             height: "90px",
                             marginLeft: "1em",
-                            position: "relative", left: ".4em" 
+                            position: "relative",
+                            left: ".4em",
                         }}
                     />
                 </button>
+                <div
+                    className="wrapper"
+                    style={{ display: successIcon ? "" : "none" }}
+                >
+                    <svg
+                        className="checkmark"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 52 52"
+                    >
+                        <circle
+                            className="checkmark__circle"
+                            cx="26"
+                            cy="26"
+                            r="25"
+                            fill="none"
+                        />
+                        <path
+                            className="checkmark__check"
+                            fill="none"
+                            d="M14.1 27.2l7.1 7.2 16.7-16.8"
+                        />
+                    </svg>
+                </div>
             </div>
         </>
     );

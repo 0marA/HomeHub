@@ -1,0 +1,13 @@
+[[headers]]
+for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+[build]
+    command = "npm run build"
+    functions = "functions"
+    publish = "build"
+
+[functions]
+    node_bundler = "esbuild"
+

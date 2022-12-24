@@ -21,8 +21,9 @@ export default function Jokes() {
 
             if (
                 (response.data.body.setup + response.data.punchline).length >
-                200
+                150
             ) {
+                console.log("Long Joke")
                 getJoke();
             }
 
@@ -47,12 +48,16 @@ export default function Jokes() {
                 className="WidgetDescription"
                 style={{
                     marginTop: "10%",
-                    placeContent: "center",
+                    position: "relative",
+                    left: "2%",
                 }}
             >
                 {setup}
             </p>
-            <p className="WidgetDescription" style={{ marginTop: ".6em" }}>
+            <p
+                className="WidgetDescription"
+                style={{ marginTop: ".6em", position: "relative", left: "2%" }}
+            >
                 {punchline}
             </p>
         </>

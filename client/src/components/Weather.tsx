@@ -118,7 +118,7 @@ export default function Weather() {
                 ></img>
                 <p
                     className="WidgetDescription"
-                    style={{ marginTop: "1em", marginLeft: "2em" }}
+                    style={{ marginTop: "1em", marginLeft: "2.3em" }}
                 >
                     {weatherMessage}
                 </p>
