@@ -41,9 +41,15 @@ export default function Jokes() {
                     marginTop: "-.2em",
                 }}
             >
-                Jokes :)
+                Jokes 💀
             </p>
-            <p className="WidgetDescription" style={{ marginTop: "10%" }}>
+            <p
+                className="WidgetDescription"
+                style={{
+                    marginTop: "10%",
+                    placeContent: "center",
+                }}
+            >
                 {setup}
             </p>
             <p className="WidgetDescription" style={{ marginTop: ".6em" }}>

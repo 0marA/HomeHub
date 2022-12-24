@@ -70,7 +70,7 @@ export default function Weather() {
                     setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
                             temperature of ${todaysWeather.current.avgTempF}°F`);
                     return;
-                } else if (currentTime > sunsetTime) {
+                } else if (currentTime > sunsetTime || new Date().getHours() < 5) {
                     if (Math.random() > 0.5)
                         setWeatherIcon(IMAGES["happynight"]);
                     else setWeatherIcon(IMAGES["halfmoon"]);

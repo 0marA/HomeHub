@@ -2,12 +2,15 @@ import Spotify from "../components/SpotifyAuthBase";
 import Weather from "../components/Weather";
 import Quotes from "../components/Quotes";
 import Jokes from "../components/Jokes";
+import Facts from "../components/Facts";
 import Tuya from "../components/Tuya";
 export default function Dashboard() {
-    let jokeOrQuote;
+    let jokeQuoteOrFact;
 
-    if (Math.random() > 0.5) jokeOrQuote = <Jokes />;
-    else jokeOrQuote = <Quotes />;
+    let randomNum = Math.random();
+    if (randomNum > 0.3) jokeQuoteOrFact = <Jokes />;
+    else if (randomNum > 0.6) jokeQuoteOrFact = <Quotes />;
+    else jokeQuoteOrFact = <Facts />;
 
     return (
         <>
@@ -46,11 +49,11 @@ export default function Dashboard() {
                     width: "17em",
                     position: "absolute",
                     left: "2em",
-                    marginTop: "8em",
+                    marginTop: "6em",
                     height: "15em",
                 }}
             >
-                {jokeOrQuote}
+                {jokeQuoteOrFact}
             </div>
             <div
                 className="Widget"
