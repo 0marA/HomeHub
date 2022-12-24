@@ -9,8 +9,7 @@ export default function Jokes() {
         method: "GET",
         url: process.env.REACT_APP_JOKES_API_URL,
         headers: {
-            "X-RapidAPI-Key":
-                process.env.REACT_APP_JOKES_API_KEY,
+            "X-RapidAPI-Key": process.env.REACT_APP_JOKES_API_KEY,
             "X-RapidAPI-Host": process.env.REACT_APP_JOKES_API_HOST,
         },
     };
@@ -19,6 +18,13 @@ export default function Jokes() {
         if (setup !== "") return;
         const getJoke = async () => {
             const response = await axios.request(options);
+
+            if (
+                (response.data.body.setup + response.data.punchline).length >
+                200
+            ) {
+                getJoke();
+            }
 
             setSetup(response.data.body.setup);
             setPunchline(response.data.body.punchline);

@@ -8,8 +8,7 @@ export default function Quote() {
         url: process.env.REACT_APP_QUOTES_API_URL,
         headers: {
             "content-type": "application/json",
-            "X-RapidAPI-Key":
-                process.env.REACT_APP_QUOTES_API_KEY,
+            "X-RapidAPI-Key": process.env.REACT_APP_QUOTES_API_KEY,
             "X-RapidAPI-Host": process.env.REACT_APP_QUOTES_API_HOST,
         },
         data: '{"key1":"value","key2":"value"}',
@@ -19,6 +18,9 @@ export default function Quote() {
         const getQuote = async () => {
             if (calledAPI.current) return;
             const response = await axios.request(options);
+            if (response.data.length > 200) {
+                getQuote();
+            }
             setQuote(response.data);
             calledAPI.current = true;
         };
@@ -29,11 +31,17 @@ export default function Quote() {
         <>
             <p
                 className="WidgetContent"
-                style={{ display: "grid", placeContent: "center", marginTop: "-.2em", }}
+                style={{
+                    display: "grid",
+                    placeContent: "center",
+                    marginTop: "-.2em",
+                }}
             >
                 Quotes
             </p>
-            <p className="WidgetDescription" style={{marginTop: "10%"}}>{quote}</p>
+            <p className="WidgetDescription" style={{ marginTop: "10%" }}>
+                {quote}
+            </p>
         </>
     );
 }

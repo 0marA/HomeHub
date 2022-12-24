@@ -2,11 +2,13 @@ import Spotify from "../components/SpotifyAuthBase";
 import Weather from "../components/Weather";
 import Quotes from "../components/Quotes";
 import Jokes from "../components/Jokes";
+import Tuya from "../components/Tuya";
 export default function Dashboard() {
     let jokeOrQuote;
 
-    if (Math.random() > .5) jokeOrQuote = <Jokes />;
+    if (Math.random() > 0.5) jokeOrQuote = <Jokes />;
     else jokeOrQuote = <Quotes />;
+
     return (
         <>
             <div className="WidgetArea">
@@ -32,35 +34,35 @@ export default function Dashboard() {
                 style={{
                     width: "17em",
                     right: "2em",
+                    marginTop: "4em",
                     position: "absolute",
-                    top: "2em",
                 }}
             >
-                {/*<Weather />*/}
+                <Weather />
             </div>
             <div
                 className="Widget"
                 style={{
                     width: "17em",
                     position: "absolute",
-                    right: "2em",
-                    marginTop: "8em",
-                    height: "12em",
-                }}
-            >
-                <Quotes />
-            </div>
-            <div
-                className="Widget"
-                style={{
-                    width: "17em",
-                    position: "absolute",
-                    right: "2em",
+                    left: "2em",
                     marginTop: "8em",
                     height: "15em",
                 }}
             >
                 {jokeOrQuote}
+            </div>
+            <div
+                className="Widget"
+                style={{
+                    width: "17em",
+                    position: "absolute",
+                    right: "2em",
+                    top: "2em",
+                    height: "13em",
+                }}
+            >
+                <Tuya />
             </div>
         </>
     );
