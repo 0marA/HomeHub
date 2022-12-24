@@ -1,5 +1,6 @@
 import Spotify from "../components/SpotifyAuthBase";
-import SunMoon from "../components/Weather";
+import Weather from "../components/Weather";
+import Quotes from "../components/Quotes";
 export default function Dashboard() {
     return (
         <>
@@ -18,7 +19,7 @@ export default function Dashboard() {
                     >
                         Now Playing
                     </p>
-                    <Spotify />
+                    {/*<Spotify />*/}
                 </div>
             </div>
             <div
@@ -30,7 +31,19 @@ export default function Dashboard() {
                     top: "2em",
                 }}
             >
-                <SunMoon />
+                {/*<Weather />*/}
+            </div>
+            <div
+                className="Widget"
+                style={{
+                    width: "17em",
+                    position: "absolute",
+                    right: "2em",
+                    marginTop: "8em",
+                    height: "12em",
+                }}
+            >
+                <Quotes />
             </div>
         </>
     );

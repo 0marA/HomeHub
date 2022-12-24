@@ -1,9 +1,17 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-import IMAGES from "../imgs/AerisIcons/WeatherIcons";
+import IMAGES from "../imgs/WeatherIcons/WeatherIcons";
 export default function Weather() {
     const [weatherIcon, setWeatherIcon] = useState<string>("");
-    let todaysWeather = useRef({ icon: null, weatherPrimary: "", avgTempF: 0 });
+    let todaysWeather = useRef({
+        icon: null,
+        weatherPrimary: "",
+        avgTempF: 0,
+        sunriseISO: "",
+        sunsetISO: "",
+    });
+    const [weatherMessage, setWeatherMessage] = useState<string>("");
+
     const WEATHER_OPTIONS = {
         method: "GET",
         url: process.env.REACT_APP_WEATHER_API_URL,
@@ -24,12 +32,65 @@ export default function Weather() {
             ) {
                 todaysWeather.current = response.data.response[0].periods[0];
 
+                const currentTime = new Date().getTime();
+                const sunriseTime = new Date(
+                    todaysWeather.current.sunriseISO
+                ).getTime();
+                const sunsetTime = new Date(
+                    todaysWeather.current.sunsetISO
+                ).getTime();
+
+                if (
+                    Math.abs(
+                        parseInt(
+                            new Date(currentTime - sunriseTime)
+                                .toISOString()
+                                .slice(11, 19)
+                                .split(":")
+                                .join("")
+                        )
+                    ) <= 3000
+                ) {
+                    setWeatherIcon(IMAGES["sunrise"]);
+                    setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
+                            temperature of ${todaysWeather.current.avgTempF}°F`);
+                    return;
+                } else if (
+                    Math.abs(
+                        parseInt(
+                            new Date(currentTime - sunsetTime)
+                                .toISOString()
+                                .slice(11, 19)
+                                .split(":")
+                                .join("")
+                        )
+                    ) <= 3000
+                ) {
+                    setWeatherIcon(IMAGES["sunset"]);
+                    setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
+                            temperature of ${todaysWeather.current.avgTempF}°F`);
+                    return;
+                } else if (currentTime > sunsetTime) {
+                    if (Math.random() > 0.5)
+                        setWeatherIcon(IMAGES["happynight"]);
+                    else setWeatherIcon(IMAGES["halfmoon"]);
+
+                    if (Math.random() > 0.5)
+                        setWeatherMessage(
+                            "Take a break and enjoy the night ❤️"
+                        );
+                    else setWeatherMessage("Relax and enjoy the night :)");
+
+                    return;
+                }
+
                 for (let i = 0; i < Object.keys(IMAGES).length; i++) {
                     if (
                         Object.keys(IMAGES)[i] + ".png" ===
                         todaysWeather.current.icon
                     ) {
-                        console.log(Object.keys(IMAGES)[i] + ".png");
+                        setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
+                            temperature of ${todaysWeather.current.avgTempF}°F`);
                         setWeatherIcon(Object.values(IMAGES)[i]);
                         break;
                     }
@@ -59,8 +120,7 @@ export default function Weather() {
                     className="WidgetDescription"
                     style={{ marginTop: "1em", marginLeft: "2em" }}
                 >
-                    {todaysWeather.current.weatherPrimary} with an average
-                    temperature of {todaysWeather.current.avgTempF}°F
+                    {weatherMessage}
                 </p>
             </div>
         </>
