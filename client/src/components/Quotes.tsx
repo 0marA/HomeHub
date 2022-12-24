@@ -17,7 +17,7 @@ export default function Quote() {
 
     useEffect(() => {
         const getQuote = async () => {
-            if (calledAPI.current === true) return;
+            if (calledAPI.current) return;
             const response = await axios.request(options);
             setQuote(response.data);
             calledAPI.current = true;
@@ -29,11 +29,11 @@ export default function Quote() {
         <>
             <p
                 className="WidgetContent"
-                style={{ display: "grid", placeContent: "center" }}
+                style={{ display: "grid", placeContent: "center", marginTop: "-.2em", }}
             >
                 Quotes
             </p>
-            <p className="WidgetDescription" style={{marginTop: ".6em"}}>{quote}</p>
+            <p className="WidgetDescription" style={{marginTop: "10%"}}>{quote}</p>
         </>
     );
 }
