@@ -38,18 +38,18 @@ export default function Tuya() {
                     marginTop: "-.2em",
                 }}
             >
-                Control
+                Control {successIcon ? "" : "💡"}
             </p>
-            <div className="WidgetContent" style={{ paddingTop: ".5em" }}>
+            <div className="WidgetContent" style={{ marginTop: "-.3em" }}>
                 <button>
                     <img
                         src={lampOff}
                         alt="lamp"
                         onClick={lampsOff}
                         style={{
-                            width: "90px",
-                            height: "90px",
-                            position: "relative",
+                            width: "120px",
+                            height: "120px",
+                            position: "absolute",
                             left: ".4em",
                         }}
                     />
@@ -60,11 +60,11 @@ export default function Tuya() {
                         alt="lamp"
                         onClick={lampsOn}
                         style={{
-                            width: "90px",
-                            height: "90px",
-                            marginLeft: "1em",
-                            position: "relative",
-                            left: ".4em",
+                            width: "120px",
+                            height: "120px",
+                            marginLeft: "3em",
+                            position: "absolute",
+                            left: ".6em",
                         }}
                     />
                 </button>

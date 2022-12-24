@@ -110,7 +110,7 @@ export default function Weather() {
                     marginTop: "-.3em",
                 }}
             >
-                <p className="WidgetContent">Weather</p>
+                <p className="WidgetContent">Weather ☁️</p>
                 <img
                     src={weatherIcon}
                     alt="Weather Icon"
