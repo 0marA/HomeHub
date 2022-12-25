@@ -3,11 +3,12 @@ import Spotify from "./Spotify";
 export default function SpotifyAuthBase() {
     useEffect(() => {
         if (localStorage.getItem("startedAuthProcess") === "true") return;
-        else startAuthFlow();
+        if (localStorage.getItem("startedAuthProcess") !== "true") {
+            startAuthFlow();
+        }
     });
 
     const startAuthFlow = () => {
-        localStorage.setItem("startedAuthProcess", "true");
         const baseURL = "https://accounts.spotify.com/authorize";
         const url = `${baseURL}?client_id=${
             process.env.REACT_APP_CLIENT_ID
@@ -15,7 +16,7 @@ export default function SpotifyAuthBase() {
             process.env.REACT_APP_REDIRECT_URI
         )}&scope=${encodeURIComponent(process.env.REACT_APP_SCOPES)}`;
 
-        window.open(url, "_self");
+        window.open(url, "_blank");
     };
 
     return (
