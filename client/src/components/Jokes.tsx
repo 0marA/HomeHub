@@ -23,8 +23,7 @@ export default function Jokes() {
                 (response.data.body.setup + response.data.punchline).length >
                 150
             ) {
-                console.log("Long Joke")
-                getJoke();
+                 getJoke();
             }
 
             setSetup(response.data.body.setup);

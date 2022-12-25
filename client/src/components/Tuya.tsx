@@ -8,8 +8,7 @@ export default function Tuya() {
         const request = await axios.get(
             `${process.env.REACT_APP_CLIENT_URL}/.netlify/functions/lampsOn`
         );
-        console.log(request.data);
-        if (request.data.message === "success") {
+         if (request.data.message === "success") {
             setSuccessIcon(true);
             setTimeout(() => {
                 setSuccessIcon(false);

@@ -41,7 +41,8 @@ export default function Spotify() {
                             json.access_token
                         );
 
-                        window.close();
+                        const win:any = window;
+                        win.location = "/dashboard";
                     }
                 })
                 .catch((error) => {
