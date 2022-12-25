@@ -41,7 +41,7 @@ export default function Dashboard() {
                     >
                         Now Playing on Spotify 🎵
                     </p>
-                    {/*<Spotify />*/}
+                    <Spotify />
                 </div>
             </div>
             <div
