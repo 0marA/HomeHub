@@ -42,6 +42,8 @@ export default function News() {
                     display: "grid",
                     placeContent: "center",
                     marginTop: "-.2em",
+                    borderRadius: ".2em",
+                    backgroundColor: "red"
                 }}
             >
                 News 📰

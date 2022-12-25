@@ -1,29 +1,29 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 export default function SmileyStocks() {
     const [smiles, setSmiles] = useState("");
     const [happy, setHappy] = useState(true);
     const [multiplier, setMultiplier] = useState("");
+
     const calledAPI = useRef(false);
-    useEffect(() => {
-        if (calledAPI.current) return;
-        const getSmiles = async () => {
-            const request = await axios.get(
+
+    if (!calledAPI.current) {
+        calledAPI.current = true;
+
+        axios
+            .get(
                 `${process.env.REACT_APP_CLIENT_URL}/.netlify/functions/getSmiles`
-            );
-            calledAPI.current = true;
+            )
+            .then((request) => {
+                if (request.data.message[3] === ")") setHappy(true);
+                else setHappy(false);
 
-            if (request.data.message[3] === ")") setHappy(true);
-            else setHappy(false);
-
-            if (request.data.message.length > 100) {
-                setSmiles(String(request.data.message).substring(1, 98));
-                setMultiplier(" X" + (request.data.message.length - 99));
-            }
-        };
-
-        getSmiles();
-    });
+                if (request.data.message.length > 115) {
+                    setSmiles(String(request.data.message).substring(1, 115));
+                    setMultiplier(" X" + (request.data.message.length - 115));
+                }
+            });
+    }
 
     return (
         <>
@@ -33,6 +33,7 @@ export default function SmileyStocks() {
                     display: "grid",
                     placeContent: "center",
                     marginTop: "-.4em",
+                    color: "#9be89b",
                 }}
             >
                 Smiley Stocks :)
@@ -68,7 +69,6 @@ export default function SmileyStocks() {
             >
                 {multiplier}
             </p>
-
         </>
     );
 }

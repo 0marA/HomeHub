@@ -6,13 +6,23 @@ import Facts from "../components/Facts";
 import Tuya from "../components/Tuya";
 import News from "../components/News";
 import SmileyStocks from "../components/SmileyStocks";
+import { useEffect, useState } from "react";
+
 export default function Dashboard() {
+    let [refresh, callRefresh] = useState<boolean>(false);
     let jokeQuoteOrFact;
 
     let randomNum = Math.random();
     if (.3 > randomNum) jokeQuoteOrFact = <Jokes />;
     else if (randomNum > 0.6 && .9 > randomNum) jokeQuoteOrFact = <Quotes />;
     else jokeQuoteOrFact = <Facts />;
+
+
+    useEffect(() => {
+        setTimeout(() => {
+            callRefresh(!refresh);
+        }, 300000);
+    });
 
     return (
         <>
@@ -31,7 +41,7 @@ export default function Dashboard() {
                     >
                         Now Playing on Spotify 🎵
                     </p>
-                    <Spotify />
+                    {/*<Spotify />*/}
                 </div>
             </div>
             <div
