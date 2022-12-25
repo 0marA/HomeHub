@@ -14,10 +14,10 @@ export default function Weather() {
 
     const WEATHER_OPTIONS = {
         method: "GET",
-        url: process.env.REACT_APP_WEATHER_API_URL,
+        url: "https://aerisweather1.p.rapidapi.com/forecasts/spring,tx",
         headers: {
-            "X-RapidAPI-Key": process.env.REACT_APP_WEATHER_API_KEY,
-            "X-RapidAPI-Host": process.env.REACT_APP_WEATHER_API_HOST,
+            "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+            "X-RapidAPI-Host": "aerisweather1.p.rapidapi.com",
         },
     };
 
@@ -118,7 +118,7 @@ export default function Weather() {
                 ></img>
                 <p
                     className="WidgetDescription"
-                    style={{ marginTop: "1em", marginLeft: "2.3em" }}
+                    style={{ marginTop: "1em", marginLeft: "2em" }}
                 >
                     {weatherMessage}
                 </p>

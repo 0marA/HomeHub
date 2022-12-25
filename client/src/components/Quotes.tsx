@@ -5,11 +5,11 @@ export default function Quote() {
     const [quote, setQuote] = useState<string>("");
     const options = {
         method: "POST",
-        url: process.env.REACT_APP_QUOTES_API_URL,
+        url: "https://motivational-quotes1.p.rapidapi.com/motivation",
         headers: {
             "content-type": "application/json",
-            "X-RapidAPI-Key": process.env.REACT_APP_QUOTES_API_KEY,
-            "X-RapidAPI-Host": process.env.REACT_APP_QUOTES_API_HOST,
+            "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+            "X-RapidAPI-Host": "motivational-quotes1.p.rapidapi.com",
         },
         data: '{"key1":"value","key2":"value"}',
     };
@@ -37,7 +37,7 @@ export default function Quote() {
                     marginTop: "-.2em",
                 }}
             >
-                Quotes
+                Quotes 👤
             </p>
             <p className="WidgetDescription" style={{ marginTop: "10%" }}>
                 {quote}

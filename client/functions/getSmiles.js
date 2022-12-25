@@ -1,22 +1,24 @@
 import fetch from "node-fetch";
+import axios from "axios";
 export async function handler(event, context) {
     const getUserStocks = async () => {
-        let userStocksMap = new Map();
+        let userStocksMap = new Map(),
+            resData;
 
-        let resData;
+        await axios.post(
+            "https://smileystocks.onrender.com/api/login/validate",
+            { username: "OmarA" }
+        );
         await fetch("https://smileystocks.onrender.com/api/dashboard/getstocks")
             .then((response) => response.json())
             .then((json) => (resData = json.stocks));
 
         for (let x = 0; x < resData.length; x++) {
             let stock = resData[x];
-            userStocksMap.set(
-                Object.keys(stock),
-                Object.values(stock)
-            );
+            userStocksMap.set(Object.keys(stock), Object.values(stock));
         }
 
-        let userDataArray = Array.from([...userStocksMap.entries()]); 
+        let userDataArray = Array.from([...userStocksMap.entries()]);
         userDataArray.sort();
 
         return { userDataArray };

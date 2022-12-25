@@ -1,36 +1,38 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-export default function Jokes() {
-    const [setup, setSetup] = useState<string>("");
-    const [punchline, setPunchline] = useState<string>("");
-
+export default function News() {
     const options = {
         method: "GET",
-        url: "https://dad-jokes.p.rapidapi.com/random/joke/png",
+        url: "https://bing-news-search1.p.rapidapi.com/news",
+        params: { textFormat: "Raw", safeSearch: "Off" },
         headers: {
+            "X-BingApis-SDK": "true",
             "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-            "X-RapidAPI-Host": "dad-jokes.p.rapidapi.com",
+            "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
         },
     };
 
+    const [news, setNews] = useState({ name: "", description: "" });
+    const [newsList, setNewsList] = useState([]);
+
     useEffect(() => {
-        if (setup !== "") return;
-        const getJoke = async () => {
+        if (news.name !== "") return;
+        const getNews = async () => {
             const response = await axios.request(options);
-
-            if (
-                (response.data.body.setup + response.data.punchline).length >
-                150
-            ) {
-                console.log("Long Joke")
-                getJoke();
-            }
-
-            setSetup(response.data.body.setup);
-            setPunchline(response.data.body.punchline);
+            setNewsList(response.data.value);
+            setNews(response.data.value[0]);
         };
-        getJoke();
+        getNews();
+    });
+
+    useEffect(() => {
+        setTimeout(() => {
+            const random = Math.floor(Math.random() * newsList.length);
+            setNews({
+                name: newsList[random].name,
+                description: newsList[random].description,
+            });
+        }, 300000);
     });
     return (
         <>
@@ -42,23 +44,23 @@ export default function Jokes() {
                     marginTop: "-.2em",
                 }}
             >
-                Jokes 💀
+                News 📰
             </p>
             <p
                 className="WidgetDescription"
                 style={{
-                    marginTop: "10%",
+                    marginTop: "1%",
                     position: "relative",
                     left: "2%",
                 }}
             >
-                {setup}
+                {news.name}
             </p>
             <p
                 className="WidgetDescription"
                 style={{ marginTop: ".6em", position: "relative", left: "2%" }}
             >
-                {punchline}
+                {news.description}
             </p>
         </>
     );

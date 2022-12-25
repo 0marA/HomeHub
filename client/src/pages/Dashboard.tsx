@@ -4,6 +4,7 @@ import Quotes from "../components/Quotes";
 import Jokes from "../components/Jokes";
 import Facts from "../components/Facts";
 import Tuya from "../components/Tuya";
+import News from "../components/News";
 import SmileyStocks from "../components/SmileyStocks";
 export default function Dashboard() {
     let jokeQuoteOrFact;
@@ -18,7 +19,7 @@ export default function Dashboard() {
             <div className="WidgetArea">
                 <div
                     className="Widget"
-                    style={{ width: "40em", height: "9em" }}
+                    style={{ width: "41em", height: "9em" }}
                 >
                     <p
                         className="WidgetContent"
@@ -38,8 +39,9 @@ export default function Dashboard() {
                 style={{
                     width: "17em",
                     right: "2em",
-                    marginTop: "5.5em",
+                    marginTop: "4.5em",
                     position: "absolute",
+                    height: "17em",
                 }}
             >
                 <Weather />
@@ -47,7 +49,7 @@ export default function Dashboard() {
             <div
                 className="Widget"
                 style={{
-                    width: "17em",
+                    width: "19em",
                     position: "absolute",
                     left: "2em",
                     marginTop: "6.5em",
@@ -63,7 +65,7 @@ export default function Dashboard() {
                     position: "absolute",
                     right: "2em",
                     top: "2em",
-                    height: "15em",
+                    height: "14em",
                 }}
             >
                 <Tuya />
@@ -71,14 +73,26 @@ export default function Dashboard() {
             <div
                 className="Widget"
                 style={{
-                    width: "40em",
+                    width: "41em",
                     position: "absolute",
                     left: "2em",
-                    top: "12em",
+                    top: "12.3em",
                     height: "6em",
                 }}
             >
                 <SmileyStocks />
+            </div>
+            <div
+                className="Widget"
+                style={{
+                    width: "21em",
+                    position: "absolute",
+                    left: "22em",
+                    marginTop: "6.5em",
+                    height: "15em",
+                }}
+            >
+                <News />
             </div>
         </>
     );

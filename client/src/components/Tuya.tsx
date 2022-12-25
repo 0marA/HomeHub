@@ -47,10 +47,10 @@ export default function Tuya() {
                         alt="lamp"
                         onClick={lampsOff}
                         style={{
-                            width: "120px",
-                            height: "120px",
+                            width: "100px",
+                            height: "100px",
                             position: "absolute",
-                            left: ".4em",
+                            left: "1em",
                         }}
                     />
                 </button>
@@ -60,11 +60,11 @@ export default function Tuya() {
                         alt="lamp"
                         onClick={lampsOn}
                         style={{
-                            width: "120px",
-                            height: "120px",
+                            width: "100px",
+                            height: "100px",
                             marginLeft: "3em",
                             position: "absolute",
-                            left: ".6em",
+                            left: "1em",
                         }}
                     />
                 </button>

@@ -6,10 +6,10 @@ export default function Facts() {
 
     const options = {
         method: "GET",
-        url: process.env.REACT_APP_FACTS_API_URL,
+        url: "https://facts-by-api-ninjas.p.rapidapi.com/v1/facts",
         headers: {
-            "X-RapidAPI-Key": process.env.REACT_APP_FACTS_API_KEY,
-            "X-RapidAPI-Host": process.env.REACT_APP_FACTS_API_HOST,
+            "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+            "X-RapidAPI-Host": "facts-by-api-ninjas.p.rapidapi.com",
         },
     };
 
@@ -41,7 +41,7 @@ export default function Facts() {
             <p
                 className="WidgetDescription"
                 style={{
-                    marginTop: "15%",
+                    marginTop: "8%",
                     placeContent: "center",
                 }}
             >
