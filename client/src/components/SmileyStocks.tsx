@@ -33,7 +33,7 @@ export default function SmileyStocks() {
                     display: "grid",
                     placeContent: "center",
                     marginTop: "-.4em",
-                    color: "#9be89b",
+                    color: "rgb(14, 117, 14)",
                 }}
             >
                 Smiley Stocks :)
