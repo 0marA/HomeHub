@@ -19,7 +19,8 @@ export default function Dashboard() {
 
 
     useEffect(() => {
-        window.scrollTo(0, document.body.scrollHeight);
+        var evt = document.createEvent("MouseEvents");    
+        evt.initMouseEvent("mousewheel", true, true, window, -1, 0, 0, 0, 0, false, false, false, false, 0, null);
         setTimeout(() => {
             callRefresh(!refresh);
         }, 900000);
