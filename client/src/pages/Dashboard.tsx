@@ -19,9 +19,10 @@ export default function Dashboard() {
 
 
     useEffect(() => {
+        window.scrollTo(0, document.body.scrollHeight);
         setTimeout(() => {
             callRefresh(!refresh);
-        }, 300000);
+        }, 900000);
     });
 
     return (

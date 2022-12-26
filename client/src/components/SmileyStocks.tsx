@@ -44,6 +44,7 @@ export default function SmileyStocks() {
                     position: "absolute",
                     bottom: "1.4em",
                     left: "1.6em",
+                    fontWeight: "bold"
                 }}
             >
                 :
@@ -64,7 +65,8 @@ export default function SmileyStocks() {
                 style={{
                     position: "absolute",
                     bottom: "1.4em",
-                    right: "2em",
+                    right: "2.1em",
+                    fontWeight: "bold"
                 }}
             >
                 {multiplier}
