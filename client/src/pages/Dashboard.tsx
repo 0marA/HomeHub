@@ -6,25 +6,14 @@ import Facts from "../components/Facts";
 import Tuya from "../components/Tuya";
 import News from "../components/News";
 import SmileyStocks from "../components/SmileyStocks";
-import { useEffect, useState } from "react";
 
 export default function Dashboard() {
-    let [refresh, callRefresh] = useState<boolean>(false);
     let jokeQuoteOrFact;
 
     let randomNum = Math.random();
-    if (.3 > randomNum) jokeQuoteOrFact = <Jokes />;
-    else if (randomNum > 0.6 && .9 > randomNum) jokeQuoteOrFact = <Quotes />;
+    if (0.3 > randomNum) jokeQuoteOrFact = <Jokes />;
+    else if (randomNum > 0.6 && 0.9 > randomNum) jokeQuoteOrFact = <Quotes />;
     else jokeQuoteOrFact = <Facts />;
-
-
-    useEffect(() => {
-        var evt = document.createEvent("MouseEvents");    
-        evt.initMouseEvent("mousewheel", true, true, window, -1, 0, 0, 0, 0, false, false, false, false, 0, null);
-        setTimeout(() => {
-            callRefresh(!refresh);
-        }, 900000);
-    });
 
     return (
         <>
