@@ -31,6 +31,12 @@ export default function Jokes() {
         };
         getJoke();
     });
+
+    useEffect(() => {
+        setTimeout(() => {
+            setSetup("");
+        }, 300000);
+    });
     return (
         <>
             <p

@@ -9,6 +9,8 @@ export async function handler(event, context) {
             "https://smileystocks.onrender.com/api/login/validate",
             { username: "OmarA" }
         );
+
+        
         await fetch("https://smileystocks.onrender.com/api/dashboard/getstocks")
             .then((response) => response.json())
             .then((json) => (resData = json.stocks));

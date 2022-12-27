@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 export default function Quote() {
-    const calledAPI = useRef(false);
     const [quote, setQuote] = useState<string>("");
     const options = {
         method: "POST",
@@ -15,16 +14,21 @@ export default function Quote() {
     };
 
     useEffect(() => {
+        if (quote !== "") return;
         const getQuote = async () => {
-            if (calledAPI.current) return;
             const response = await axios.request(options);
             if (response.data.length > 200) {
                 getQuote();
             }
             setQuote(response.data);
-            calledAPI.current = true;
         };
         getQuote();
+    });
+
+    useEffect(() => {
+        setTimeout(() => {
+            setQuote("");
+        }, 300000);
     });
 
     return (

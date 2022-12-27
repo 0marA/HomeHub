@@ -15,6 +15,8 @@ export default function Dashboard() {
     else if (randomNum > 0.6 && 0.9 > randomNum) jokeQuoteOrFact = <Quotes />;
     else jokeQuoteOrFact = <Facts />;
 
+    jokeQuoteOrFact = <Facts />;
+
     return (
         <>
             <div className="WidgetArea">

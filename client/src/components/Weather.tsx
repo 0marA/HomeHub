@@ -24,7 +24,6 @@ export default function Weather() {
     useEffect(() => {
         const getWeather = async () => {
             if (todaysWeather.current.icon !== null) return;
-
             let response = await axios.request(WEATHER_OPTIONS);
             if (
                 response.data.success === true &&
@@ -70,7 +69,10 @@ export default function Weather() {
                     setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
                             temperature of ${todaysWeather.current.avgTempF}°F`);
                     return;
-                } else if (currentTime > sunsetTime || new Date().getHours() < 5) {
+                } else if (
+                    currentTime > sunsetTime ||
+                    new Date().getHours() < 5
+                ) {
                     if (Math.random() > 0.5)
                         setWeatherIcon(IMAGES["happynight"]);
                     else setWeatherIcon(IMAGES["halfmoon"]);
@@ -99,6 +101,18 @@ export default function Weather() {
         };
 
         getWeather();
+    });
+
+    useEffect(() => {
+        setTimeout(() => {
+            todaysWeather.current = {
+                icon: null,
+                weatherPrimary: "",
+                avgTempF: 0,
+                sunriseISO: "",
+                sunsetISO: "",
+            };
+        }, 300000);
     });
 
     return (
