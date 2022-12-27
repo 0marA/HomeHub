@@ -18,6 +18,7 @@ const IMAGES = {
     sunset: require("./sunset.png"),
     happynight: require("./happynight.png"),
     halfmoon: require("./half-moon.png"),
+    snorlax: require("./bigsnorlax.png"),
 };
 
 export default IMAGES;

@@ -43,7 +43,7 @@ export default function News() {
                     placeContent: "center",
                     marginTop: "-.2em",
                     borderRadius: ".2em",
-                    backgroundColor: "red"
+                    backgroundColor: "#f27676"
                 }}
             >
                 News 📰

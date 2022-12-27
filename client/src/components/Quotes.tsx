@@ -39,11 +39,16 @@ export default function Quote() {
                     display: "grid",
                     placeContent: "center",
                     marginTop: "-.2em",
+                    borderRadius: ".2em",
+                    backgroundColor: "rgb(115, 171, 245)",
                 }}
             >
                 Quotes 👤
             </p>
-            <p className="WidgetDescription" style={{ marginTop: "10%" }}>
+            <p
+                className="WidgetDescription"
+                style={{ marginTop: "10%", textAlign: "center" }}
+            >
                 {quote}
             </p>
         </>

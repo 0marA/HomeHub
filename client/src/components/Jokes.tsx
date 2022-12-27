@@ -45,6 +45,8 @@ export default function Jokes() {
                     display: "grid",
                     placeContent: "center",
                     marginTop: "-.2em",
+                    borderRadius: ".2em",
+                    backgroundColor: "rgb(115, 171, 245)"
                 }}
             >
                 Jokes 💀
@@ -53,8 +55,7 @@ export default function Jokes() {
                 className="WidgetDescription"
                 style={{
                     marginTop: "10%",
-                    position: "relative",
-                    left: "2%",
+                    textAlign: "center"
                 }}
             >
                 {setup}

@@ -40,6 +40,8 @@ export default function Facts() {
                     display: "grid",
                     placeContent: "center",
                     marginTop: "-.2em",
+                    borderRadius: ".2em",
+                    backgroundColor: "rgb(115, 171, 245)"
                 }}
             >
                 Fun Facts 📚
@@ -48,7 +50,7 @@ export default function Facts() {
                 className="WidgetDescription"
                 style={{
                     marginTop: "8%",
-                    placeContent: "center",
+                    textAlign: "center"
                 }}
             >
                 {fact}

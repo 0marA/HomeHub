@@ -73,14 +73,14 @@ export default function Weather() {
                     currentTime > sunsetTime ||
                     new Date().getHours() < 5
                 ) {
-                    if (Math.random() > 0.5)
-                        setWeatherIcon(IMAGES["happynight"]);
-                    else setWeatherIcon(IMAGES["halfmoon"]);
+                    const random = Math.random();
+                    if (0.3 > random) setWeatherIcon(IMAGES["happynight"]);
+                    else if (random > 0.3 && 0.6 > random)
+                        setWeatherIcon(IMAGES["halfmoon"]);
+                    else setWeatherIcon(IMAGES["snorlax"]);
 
                     if (Math.random() > 0.5)
-                        setWeatherMessage(
-                            "Take a break and enjoy the night ❤️"
-                        );
+                        setWeatherMessage("Stay safe and enjoy the night ❤️");
                     else setWeatherMessage("Relax and enjoy the night :)");
 
                     return;
@@ -93,7 +93,9 @@ export default function Weather() {
                     ) {
                         setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
                             temperature of ${todaysWeather.current.avgTempF}°F`);
-                        setWeatherIcon(Object.values(IMAGES)[i]);
+                        //setWeatherIcon(Object.values(IMAGES)[i]);
+                        setWeatherIcon(IMAGES["snorlax"]);
+
                         break;
                     }
                 }
@@ -132,7 +134,7 @@ export default function Weather() {
                 ></img>
                 <p
                     className="WidgetDescription"
-                    style={{ marginTop: "1em", marginLeft: "2em" }}
+                    style={{ marginTop: "1em", textAlign: "center" }}
                 >
                     {weatherMessage}
                 </p>
