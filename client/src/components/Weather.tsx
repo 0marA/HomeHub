@@ -93,8 +93,7 @@ export default function Weather() {
                     ) {
                         setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
                             temperature of ${todaysWeather.current.avgTempF}°F`);
-                        //setWeatherIcon(Object.values(IMAGES)[i]);
-                        setWeatherIcon(IMAGES["snorlax"]);
+                        setWeatherIcon(Object.values(IMAGES)[i]);
 
                         break;
                     }
