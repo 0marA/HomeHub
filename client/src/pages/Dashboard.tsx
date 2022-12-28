@@ -6,7 +6,7 @@ import Facts from "../components/Facts";
 import Tuya from "../components/Tuya";
 import News from "../components/News";
 import SmileyStocks from "../components/SmileyStocks";
-
+import Clock from "../components/Clock";
 export default function Dashboard() {
     let jokeQuoteOrFact;
 
@@ -40,9 +40,9 @@ export default function Dashboard() {
                 style={{
                     width: "17em",
                     right: "2em",
-                    marginTop: "4.5em",
+                    marginTop: "6.5em",
                     position: "absolute",
-                    height: "17em",
+                    height: "15em",
                 }}
             >
                 <Weather />
@@ -65,8 +65,8 @@ export default function Dashboard() {
                     width: "17em",
                     position: "absolute",
                     right: "2em",
-                    top: "2em",
-                    height: "14em",
+                    top: "6.3em",
+                    height: "12em",
                 }}
             >
                 <Tuya />
@@ -94,6 +94,20 @@ export default function Dashboard() {
                 }}
             >
                 <News />
+            </div>
+
+            <div
+                className="Widget"
+                style={{
+                    width: "17em",
+                    position: "absolute",
+                    right: "2em",
+                    top: "2em",
+                    height: "2em",
+                    textAlign: "center"
+                }}
+            >
+                <Clock />
             </div>
         </>
     );

@@ -20,7 +20,7 @@ export default function News() {
         const getNews = async () => {
             const response = await axios.request(options);
             setNewsList(response.data.value);
-            setNews(response.data.value[0]);
+            setNews(response.data.value[parseInt(Math.random() * 10 + "")]);
         };
         getNews();
     });
