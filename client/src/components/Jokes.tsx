@@ -35,7 +35,7 @@ export default function Jokes() {
     useEffect(() => {
         setTimeout(() => {
             setSetup("");
-        }, 300000);
+        }, 600000);
     });
     return (
         <>
@@ -46,7 +46,7 @@ export default function Jokes() {
                     placeContent: "center",
                     marginTop: "-.2em",
                     borderRadius: ".2em",
-                    backgroundColor: "rgb(115, 171, 245)"
+                    backgroundColor: "rgb(143, 115, 245)"
                 }}
             >
                 Jokes 💀

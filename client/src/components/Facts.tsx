@@ -30,7 +30,7 @@ export default function Facts() {
     useEffect(() => {
         setTimeout(() => {
             setFact("");
-        }, 300000);
+        }, 600000);
     });
     return (
         <>
@@ -41,7 +41,7 @@ export default function Facts() {
                     placeContent: "center",
                     marginTop: "-.2em",
                     borderRadius: ".2em",
-                    backgroundColor: "rgb(115, 171, 245)"
+                    backgroundColor: "rgb(143, 115, 245)"
                 }}
             >
                 Fun Facts 📚

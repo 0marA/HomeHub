@@ -35,6 +35,8 @@ export default function Tuya() {
                     display: "grid",
                     placeContent: "center",
                     marginTop: "-.2em",
+                    borderRadius: ".2em",
+                    backgroundColor: "rgb(245, 182, 115)",
                 }}
             >
                 Control {successIcon ? "" : "💡"}

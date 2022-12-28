@@ -28,7 +28,7 @@ export default function Quote() {
     useEffect(() => {
         setTimeout(() => {
             setQuote("");
-        }, 300000);
+        }, 600000);
     });
 
     return (
@@ -40,7 +40,7 @@ export default function Quote() {
                     placeContent: "center",
                     marginTop: "-.2em",
                     borderRadius: ".2em",
-                    backgroundColor: "rgb(115, 171, 245)",
+                    backgroundColor: "rgb(143, 115, 245)",
                 }}
             >
                 Quotes 👤

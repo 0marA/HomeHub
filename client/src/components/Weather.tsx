@@ -6,7 +6,7 @@ export default function Weather() {
     let todaysWeather = useRef({
         icon: null,
         weatherPrimary: "",
-        avgTempF: 0,
+        avgFeelslikeF: 0,
         sunriseISO: "",
         sunsetISO: "",
     });
@@ -24,6 +24,7 @@ export default function Weather() {
     useEffect(() => {
         const getWeather = async () => {
             if (todaysWeather.current.icon !== null) return;
+
             let response = await axios.request(WEATHER_OPTIONS);
             if (
                 response.data.success === true &&
@@ -51,8 +52,9 @@ export default function Weather() {
                     ) <= 3000
                 ) {
                     setWeatherIcon(IMAGES["sunrise"]);
+
                     setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
-                            temperature of ${todaysWeather.current.avgTempF}°F`);
+                            temperature of ${todaysWeather.current.avgFeelslikeF}°F`);
                     return;
                 } else if (
                     Math.abs(
@@ -67,7 +69,7 @@ export default function Weather() {
                 ) {
                     setWeatherIcon(IMAGES["sunset"]);
                     setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
-                            temperature of ${todaysWeather.current.avgTempF}°F`);
+                            temperature of ${todaysWeather.current.avgFeelslikeF}°F`);
                     return;
                 } else if (
                     currentTime > sunsetTime ||
@@ -92,9 +94,8 @@ export default function Weather() {
                         todaysWeather.current.icon
                     ) {
                         setWeatherMessage(`${todaysWeather.current.weatherPrimary} with an average
-                            temperature of ${todaysWeather.current.avgTempF}°F`);
+                            temperature of ${todaysWeather.current.avgFeelslikeF}°F`);
                         setWeatherIcon(Object.values(IMAGES)[i]);
-
                         break;
                     }
                 }
@@ -106,14 +107,9 @@ export default function Weather() {
 
     useEffect(() => {
         setTimeout(() => {
-            todaysWeather.current = {
-                icon: null,
-                weatherPrimary: "",
-                avgTempF: 0,
-                sunriseISO: "",
-                sunsetISO: "",
-            };
-        }, 300000);
+            todaysWeather.current.icon = null;
+            setWeatherIcon(Math.random() + "");
+        }, 600000);
     });
 
     return (
@@ -125,7 +121,18 @@ export default function Weather() {
                     marginTop: "-.3em",
                 }}
             >
-                <p className="WidgetContent">Weather ☁️</p>
+                <p
+                    className="WidgetContent"
+                    style={{
+                        display: "grid",
+                        placeContent: "center",
+                        borderRadius: ".2em",
+                        backgroundColor: "rgb(115, 171, 245)",
+                        width: "100%",
+                    }}
+                >
+                    Weather ☁️
+                </p>
                 <img
                     src={weatherIcon}
                     alt="Weather Icon"
