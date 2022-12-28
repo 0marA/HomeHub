@@ -4,7 +4,7 @@ export default function Clock() {
 
     const refreshClock = () => {
         setDate(new Date());
-    }
+    };
     useEffect(() => {
         const timerId = setInterval(refreshClock, 1000);
         return function cleanup() {
@@ -12,5 +12,26 @@ export default function Clock() {
         };
     }, []);
 
-    return <p className="WidgetContent" style={{marginTop: "-.5em"}}> {date.toLocaleTimeString().slice(0, 5)}{" "}{date.toLocaleTimeString().slice(8, 12)}</p>;
+    const addZero = (i: any) => {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    };
+
+    const d = new Date();
+    let h = addZero(d.getHours());
+    let amPM = "AM";
+    if (h > 12) {
+        h = h - 12;
+        amPM = "PM";
+    } else amPM = "AM";
+    const m = addZero(d.getMinutes());
+    const time = h + ":" + m + " " + amPM;
+
+    return (
+        <p className="WidgetContent" style={{ marginTop: "-.5em" }}>
+            {time}
+        </p>
+    );
 }

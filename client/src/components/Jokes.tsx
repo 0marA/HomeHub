@@ -23,7 +23,7 @@ export default function Jokes() {
                 (response.data.body.setup + response.data.punchline).length >
                 150
             ) {
-                 getJoke();
+                getJoke();
             }
 
             setSetup(response.data.body.setup);
@@ -46,7 +46,7 @@ export default function Jokes() {
                     placeContent: "center",
                     marginTop: "-.2em",
                     borderRadius: ".2em",
-                    backgroundColor: "rgb(143, 115, 245)"
+                    backgroundColor: "rgb(143, 115, 245)",
                 }}
             >
                 Jokes 💀
@@ -55,14 +55,14 @@ export default function Jokes() {
                 className="WidgetDescription"
                 style={{
                     marginTop: "10%",
-                    textAlign: "center"
+                    textAlign: "center",
                 }}
             >
                 {setup}
             </p>
             <p
                 className="WidgetDescription"
-                style={{ marginTop: ".6em", position: "relative", left: "2%" }}
+                style={{ marginTop: ".6em", textAlign: "center" }}
             >
                 {punchline}
             </p>
