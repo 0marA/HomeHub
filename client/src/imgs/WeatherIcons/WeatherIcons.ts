@@ -13,6 +13,7 @@ const IMAGES = {
     tstorm: require("./tstorm.png"),
     wind: require("./wind.png"),
     pm_pcloudy: require("./pm_pcloudy.png"),
+    pcloudyt: require("./pcloudyt.png"),
     fair: require("./fair.png"),
     sunrise: require("./sunrise.png"),
     sunset: require("./sunset.png"),
