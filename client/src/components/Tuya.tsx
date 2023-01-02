@@ -1,6 +1,6 @@
 import { useState } from "react";
 import lampOn from "../imgs/CustomIcons/lampOn.png";
-import lampOff from "../imgs/CustomIcons/lampOff.png";
+import lampOff from "../imgs/CustomIcons/lampOff2.png";
 import axios from "axios";
 export default function Tuya() {
     const [successIcon, setSuccessIcon] = useState(false);

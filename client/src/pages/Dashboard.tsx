@@ -7,6 +7,7 @@ import Tuya from "../components/Tuya";
 import News from "../components/News";
 import SmileyStocks from "../components/SmileyStocks";
 import Clock from "../components/Clock";
+
 export default function Dashboard() {
     let jokeQuoteOrFact;
 
@@ -104,7 +105,7 @@ export default function Dashboard() {
                     right: "2em",
                     top: "2em",
                     height: "2em",
-                    textAlign: "center"
+                    textAlign: "center",
                 }}
             >
                 <Clock />

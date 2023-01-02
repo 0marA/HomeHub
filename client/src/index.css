@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    background-color: rgb(50, 163, 220) !important;
+    background-color: rgb(50, 163, 220);
 }
 
 .WidgetArea {
@@ -21,7 +21,9 @@ body {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     border-radius: 0.5rem;
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
+    background-color: rgb(0, 0, 0);
+    color: #fff;
     width: 100%;
     overflow: hidden;
 }

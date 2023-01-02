@@ -57,6 +57,10 @@ export default function Spotify() {
                 autoPlay={true}
                 styles={{
                     loaderSize: "100%",
+                    bgColor: "black",
+                    color: "white",
+                    trackNameColor: "white",
+                    sliderHandleColor: "white",
                 }}
                 syncExternalDevice={true}
                 showSaveIcon={true}

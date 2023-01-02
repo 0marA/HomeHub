@@ -15,7 +15,10 @@ root.render(
             <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/" element={<Dashboard />} />
-                <Route path="/callback" element={<SpotifyOAuth />} />
+                <Route
+                    path="/callback"
+                    element={<SpotifyOAuth isNight={false} />}
+                />
             </Routes>
         </Router>
     </React.StrictMode>

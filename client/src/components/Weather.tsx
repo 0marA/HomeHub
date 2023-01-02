@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import IMAGES from "../imgs/WeatherIcons/WeatherIcons";
+
 export default function Weather() {
     const [weatherIcon, setWeatherIcon] = useState<string>("");
     let todaysWeather = useRef({
@@ -140,7 +141,7 @@ export default function Weather() {
                 ></img>
                 <p
                     className="WidgetDescription"
-                    style={{ marginTop: ".5em", textAlign: "center" }}
+                    style={{ marginTop: ".3em", textAlign: "center" }}
                 >
                     {weatherMessage}
                 </p>

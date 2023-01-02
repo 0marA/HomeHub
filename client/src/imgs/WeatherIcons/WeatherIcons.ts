@@ -20,6 +20,7 @@ const IMAGES = {
     happynight: require("./happynight.png"),
     halfmoon: require("./half-moon.png"),
     snorlax: require("./bigsnorlax.png"),
+    mcloudyt: require("./mcloudyt.png"),
 };
 
 export default IMAGES;
