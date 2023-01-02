@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    background-color: rgb(50, 163, 220);
+    background-color: rgb(50, 163, 220) !important;
 }
 
 .WidgetArea {
