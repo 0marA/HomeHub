@@ -25,12 +25,6 @@ export default function Quote() {
         getQuote();
     });
 
-    useEffect(() => {
-        setTimeout(() => {
-            setQuote("");
-        }, 600000);
-    });
-
     return (
         <>
             <p

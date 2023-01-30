@@ -32,11 +32,7 @@ export default function Jokes() {
         getJoke();
     });
 
-    useEffect(() => {
-        setTimeout(() => {
-            setSetup("");
-        }, 600000);
-    });
+
     return (
         <>
             <p

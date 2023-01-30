@@ -33,6 +33,8 @@ export default function Weather() {
             ) {
                 todaysWeather.current = response.data.response[0].periods[0];
 
+                console.log(todaysWeather.current)
+
                 const currentTime = new Date().getTime();
                 const sunriseTime = new Date(
                     todaysWeather.current.sunriseISO

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Spotify from "../components/SpotifyAuthBase";
 import Weather from "../components/Weather";
 import Quotes from "../components/Quotes";
@@ -15,6 +16,12 @@ export default function Dashboard() {
     if (0.3 > randomNum) jokeQuoteOrFact = <Jokes />;
     else if (randomNum > 0.6 && 0.9 > randomNum) jokeQuoteOrFact = <Quotes />;
     else jokeQuoteOrFact = <Facts />;
+
+    useEffect(() => {
+        setTimeout(() => {
+            window.location.reload();
+        }, 600000);
+    });
 
     return (
         <>

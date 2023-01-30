@@ -27,11 +27,7 @@ export default function Facts() {
         getFact();
     });
 
-    useEffect(() => {
-        setTimeout(() => {
-            setFact("");
-        }, 600000);
-    });
+
     return (
         <>
             <p

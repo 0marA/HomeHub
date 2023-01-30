@@ -21,6 +21,8 @@ const IMAGES = {
     halfmoon: require("./half-moon.png"),
     snorlax: require("./bigsnorlax.png"),
     mcloudyt: require("./mcloudyt.png"),
+    mcloudy: require("./mcloudy.png"),
+    mcloudyr: require("./mcloudyr.png"),
 };
 
 export default IMAGES;
