@@ -21,7 +21,9 @@ export default function SmileyStocks() {
                 if (request.data.message.length > 115) {
                     setSmiles(String(request.data.message).substring(1, 115));
                     setMultiplier(" X" + (request.data.message.length - 115));
-                }
+                } else {
+                    setSmiles(String(request.data.message).substring(1));
+                    setMultiplier("");}
             });
     }
 

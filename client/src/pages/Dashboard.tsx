@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Spotify from "../components/SpotifyAuthBase";
 import Weather from "../components/Weather";
 import Quotes from "../components/Quotes";
@@ -11,21 +11,33 @@ import Clock from "../components/Clock";
 
 export default function Dashboard() {
     let jokeQuoteOrFact;
+    const [render, setRender] = useState(0);
+    const divRef = useRef(null);
 
-    let randomNum = Math.random();
-    if (0.3 > randomNum) jokeQuoteOrFact = <Jokes />;
-    else if (randomNum > 0.6 && 0.9 > randomNum) jokeQuoteOrFact = <Quotes />;
-    else jokeQuoteOrFact = <Facts />;
+    const cycleWidget = () => {
+        let randomNum = Math.random();
+        if (0.3 > randomNum) jokeQuoteOrFact = <Jokes />;
+        else if (randomNum > 0.6 && 0.9 > randomNum)
+            jokeQuoteOrFact = <Quotes />;
+        else jokeQuoteOrFact = <Facts />;
+    };
+
+    useEffect(() => {
+        divRef.current.scrollIntoView({ behavior: "smooth" });
+    });
 
     useEffect(() => {
         setTimeout(() => {
-            window.location.reload();
-        }, 600000);
+            cycleWidget();
+            setRender(render + 1);
+        }, 1740000);
     });
+
+    cycleWidget();
 
     return (
         <>
-            <div className="WidgetArea">
+            <div className="WidgetArea" ref={divRef}>
                 <div
                     className="Widget"
                     style={{ width: "41em", height: "9em" }}
