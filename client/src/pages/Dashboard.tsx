@@ -23,7 +23,7 @@ export default function Dashboard() {
     };
 
     useEffect(() => {
-        divRef.current.scrollIntoView({ behavior: "smooth" });
+        window.scrollY = 400;
     });
 
     useEffect(() => {
