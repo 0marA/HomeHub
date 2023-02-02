@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Spotify from "../components/SpotifyAuthBase";
 import Weather from "../components/Weather";
 import Quotes from "../components/Quotes";
@@ -12,7 +12,6 @@ import Clock from "../components/Clock";
 export default function Dashboard() {
     let jokeQuoteOrFact;
     const [render, setRender] = useState(0);
-    const divRef = useRef(null);
 
     const cycleWidget = () => {
         let randomNum = Math.random();
@@ -23,13 +22,10 @@ export default function Dashboard() {
     };
 
     useEffect(() => {
-        window.scrollY = 400;
-    });
-
-    useEffect(() => {
         setTimeout(() => {
             cycleWidget();
             setRender(render + 1);
+            document.querySelector("body").requestFullscreen();
         }, 1740000);
     });
 
@@ -37,7 +33,7 @@ export default function Dashboard() {
 
     return (
         <>
-            <div className="WidgetArea" ref={divRef}>
+            <div className="WidgetArea">
                 <div
                     className="Widget"
                     style={{ width: "41em", height: "9em" }}

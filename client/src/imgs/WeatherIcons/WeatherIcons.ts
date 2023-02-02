@@ -23,6 +23,7 @@ const IMAGES = {
     mcloudyt: require("./mcloudyt.png"),
     mcloudy: require("./mcloudy.png"),
     mcloudyr: require("./mcloudyr.png"),
+    showers: require("./showers.png"),
 };
 
 export default IMAGES;

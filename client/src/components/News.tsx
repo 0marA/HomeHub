@@ -3,37 +3,26 @@ import axios from "axios";
 export default function News() {
     const options = {
         method: "GET",
-        url: "https://bing-news-search1.p.rapidapi.com/news",
-        params: { textFormat: "Raw", safeSearch: "Off" },
+        url: "https://ny-times-news-titles-and-urls.p.rapidapi.com/news",
         headers: {
-            "X-BingApis-SDK": "true",
             "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-            "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
+            "X-RapidAPI-Host": "ny-times-news-titles-and-urls.p.rapidapi.com",
         },
     };
 
-    const [news, setNews] = useState({ name: "", description: "" });
-    const [newsList, setNewsList] = useState([]);
+    const [news, setNews] = useState("");
 
     useEffect(() => {
-        if (news.name !== "") return;
+        if (news !== "") return;
         const getNews = async () => {
             const response = await axios.request(options);
-            setNewsList(response.data.value);
-            setNews(response.data.value[parseInt(Math.random() * 10 + "")]);
+            console.log(response.data.world);
+
+            setNews(response.data.world[0].title);
         };
         getNews();
     });
 
-    useEffect(() => {
-        setTimeout(() => {
-            const random = Math.floor(Math.random() * newsList.length);
-            setNews({
-                name: newsList[random].name,
-                description: newsList[random].description,
-            });
-        }, 300000);
-    });
     return (
         <>
             <p
@@ -43,7 +32,7 @@ export default function News() {
                     placeContent: "center",
                     marginTop: "-.2em",
                     borderRadius: ".2em",
-                    backgroundColor: "rgb(236, 74, 74)"
+                    backgroundColor: "rgb(236, 74, 74)",
                 }}
             >
                 News 📰
@@ -56,13 +45,7 @@ export default function News() {
                     left: "2%",
                 }}
             >
-                {news.name}
-            </p>
-            <p
-                className="WidgetDescription"
-                style={{ marginTop: ".6em", position: "relative", left: "2%" }}
-            >
-                {news.description}
+                {news}
             </p>
         </>
     );
