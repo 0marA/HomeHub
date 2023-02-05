@@ -2,9 +2,12 @@ import { useEffect } from "react";
 import Spotify from "./Spotify";
 export default function SpotifyAuthBase() {
     useEffect(() => {
-        if (localStorage.getItem("startedAuthProcess") === "true") return;
-        if (localStorage.getItem("startedAuthProcess") !== "true") {
-            startAuthFlow();
+        localStorage.setItem("Time", Date.now() + "");
+        if (Date.now() - parseFloat(localStorage.getItem("Time")) > 1.8e6) {
+            if (localStorage.getItem("startedAuthProcess") === "true") return;
+            if (localStorage.getItem("startedAuthProcess") !== "true") {
+                startAuthFlow();
+            }
         }
     });
 

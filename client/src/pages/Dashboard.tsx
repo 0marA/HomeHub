@@ -8,8 +8,10 @@ import Tuya from "../components/Tuya";
 import News from "../components/News";
 import SmileyStocks from "../components/SmileyStocks";
 import Clock from "../components/Clock";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 export default function Dashboard() {
+    const handle = useFullScreenHandle();
     let jokeQuoteOrFact;
     const [render, setRender] = useState(0);
 
@@ -25,7 +27,6 @@ export default function Dashboard() {
         setTimeout(() => {
             cycleWidget();
             setRender(render + 1);
-            document.documentElement.requestFullscreen({ navigationUI: "hide" })
         }, 1740000);
     });
 
@@ -33,98 +34,107 @@ export default function Dashboard() {
 
     return (
         <>
-            <div className="WidgetArea">
-                <div
-                    className="Widget"
-                    style={{ width: "41em", height: "9em" }}
-                >
-                    <p
-                        className="WidgetContent"
+            <button onClick={handle.enter} style={{opacity: "0"}}>Enter full screen</button>
+            <FullScreen handle={handle}>
+                <div className="WidgetArea">
+                    <div
+                        className="Widget"
                         style={{
-                            paddingBottom: ".4em",
-                            display: "grid",
-                            placeContent: "center",
+                            width: "41em",
+                            height: "9em",
+                            position: "relative",
+                            top: "-1.5em",
+                            overflow: "visible"
                         }}
                     >
-                        Now Playing on Spotify 🎵
-                    </p>
-                    <Spotify />
+                        <p
+                            className="WidgetContent"
+                            style={{
+                                paddingBottom: ".4em",
+                                display: "grid",
+                                placeContent: "center",
+                            }}
+                        >
+                            Now Playing on Spotify 🎵
+                        </p>
+                        <Spotify />
+                    </div>
                 </div>
-            </div>
-            <div
-                className="Widget"
-                style={{
-                    width: "17em",
-                    right: "2em",
-                    marginTop: "6.5em",
-                    position: "absolute",
-                    height: "15em",
-                }}
-            >
-                <Weather />
-            </div>
-            <div
-                className="Widget"
-                style={{
-                    width: "19em",
-                    position: "absolute",
-                    left: "2em",
-                    marginTop: "6.5em",
-                    height: "15em",
-                }}
-            >
-                {jokeQuoteOrFact}
-            </div>
-            <div
-                className="Widget"
-                style={{
-                    width: "17em",
-                    position: "absolute",
-                    right: "2em",
-                    top: "6.3em",
-                    height: "12em",
-                }}
-            >
-                <Tuya />
-            </div>
-            <div
-                className="Widget"
-                style={{
-                    width: "41em",
-                    position: "absolute",
-                    left: "2em",
-                    top: "12.3em",
-                    height: "6em",
-                }}
-            >
-                <SmileyStocks />
-            </div>
-            <div
-                className="Widget"
-                style={{
-                    width: "21em",
-                    position: "absolute",
-                    left: "22em",
-                    marginTop: "6.5em",
-                    height: "15em",
-                }}
-            >
-                <News />
-            </div>
+                <div
+                    className="Widget"
+                    style={{
+                        width: "17em",
+                        right: "2em",
+                        marginTop: "6.5em",
+                        position: "absolute",
+                        height: "15em",
+                    }}
+                >
+                    <Weather />
+                </div>
+                <div
+                    className="Widget"
+                    style={{
+                        width: "19em",
+                        position: "absolute",
+                        left: "2em",
+                        marginTop: "6.5em",
+                        height: "15em",
+                    }}
+                >
+                    {jokeQuoteOrFact}
+                </div>
+                <div
+                    className="Widget"
+                    style={{
+                        width: "17em",
+                        position: "absolute",
+                        right: "2em",
+                        top: "6.3em",
+                        height: "12em",
+                    }}
+                >
+                    <Tuya />
+                </div>
+                <div
+                    className="Widget"
+                    style={{
+                        width: "41em",
+                        position: "absolute",
+                        left: "2em",
+                        top: "12.3em",
+                        height: "6em",
+                    }}
+                >
+                    <SmileyStocks />
+                </div>
+                <div
+                    className="Widget"
+                    style={{
+                        width: "21em",
+                        position: "absolute",
+                        left: "22em",
+                        marginTop: "6.5em",
+                        height: "15em",
+                    }}
+                >
+                    <News />
+                </div>
 
-            <div
-                className="Widget"
-                style={{
-                    width: "17em",
-                    position: "absolute",
-                    right: "2em",
-                    top: "2em",
-                    height: "2em",
-                    textAlign: "center",
-                }}
-            >
-                <Clock />
-            </div>
+                <div
+                    className="Widget"
+                    style={{
+                        width: "17em",
+                        position: "absolute",
+                        right: "2em",
+                        top: "2em",
+                        height: "2em",
+                        textAlign: "center",
+                    }}
+                >
+                    <Clock />
+                </div>
+            </FullScreen>
         </>
     );
 }
