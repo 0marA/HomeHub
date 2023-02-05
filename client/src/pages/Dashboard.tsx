@@ -25,7 +25,7 @@ export default function Dashboard() {
         setTimeout(() => {
             cycleWidget();
             setRender(render + 1);
-            document.querySelector("body").requestFullscreen();
+            document.documentElement.requestFullscreen({ navigationUI: "hide" })
         }, 1740000);
     });
 
