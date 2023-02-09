@@ -33,7 +33,7 @@ export default function Weather() {
             ) {
                 todaysWeather.current = response.data.response[0].periods[0];
 
-                console.log(todaysWeather.current.icon)
+                console.log(todaysWeather.current.icon);
 
                 const currentTime = new Date().getTime();
                 const sunriseTime = new Date(
@@ -112,11 +112,11 @@ export default function Weather() {
         setTimeout(() => {
             todaysWeather.current.icon = null;
             setWeatherIcon(Math.random() + "");
-        }, 600000);
+        }, 600000 * 2);
     });
 
     return (
-        <>
+        <div>
             <div
                 style={{
                     display: "grid",
@@ -148,6 +148,6 @@ export default function Weather() {
                     {weatherMessage}
                 </p>
             </div>
-        </>
+        </div>
     );
 }

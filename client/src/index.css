@@ -115,3 +115,7 @@ body {
         box-shadow: inset 0px 0px 0px 30px #4cab04a0;
     }
 }
+
+.Fullscreen {
+    background: rgb(50, 163, 220) !important;
+}

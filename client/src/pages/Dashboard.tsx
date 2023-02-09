@@ -34,8 +34,13 @@ export default function Dashboard() {
 
     return (
         <>
-            <button onClick={handle.enter} style={{opacity: "0"}}>Enter full screen</button>
-            <FullScreen handle={handle}>
+            <button onClick={handle.enter} style={{ opacity: "0" }}>
+                Enter full screen
+            </button>
+            <button onClick={handle.exit} style={{ opacity: "0" }}>
+                Exit full screen
+            </button>
+            <FullScreen className="Fullscreen" handle={handle}>
                 <div className="WidgetArea">
                     <div
                         className="Widget"
@@ -43,8 +48,7 @@ export default function Dashboard() {
                             width: "41em",
                             height: "9em",
                             position: "relative",
-                            top: "-1.5em",
-                            overflow: "visible"
+                            overflow: "visible",
                         }}
                     >
                         <p

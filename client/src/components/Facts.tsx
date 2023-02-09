@@ -27,9 +27,8 @@ export default function Facts() {
         getFact();
     });
 
-
     return (
-        <>
+        <div>
             <p
                 className="WidgetContent"
                 style={{
@@ -37,7 +36,7 @@ export default function Facts() {
                     placeContent: "center",
                     marginTop: "-.2em",
                     borderRadius: ".2em",
-                    backgroundColor: "rgb(143, 115, 245)"
+                    backgroundColor: "rgb(143, 115, 245)",
                 }}
             >
                 Fun Facts 📚
@@ -46,11 +45,11 @@ export default function Facts() {
                 className="WidgetDescription"
                 style={{
                     marginTop: "8%",
-                    textAlign: "center"
+                    textAlign: "center",
                 }}
             >
                 {fact}
             </p>
-        </>
+        </div>
     );
 }

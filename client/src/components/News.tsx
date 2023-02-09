@@ -1,27 +1,32 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-export default function News() {
-    const options = {
-        method: "GET",
-        url: "https://ny-times-news-titles-and-urls.p.rapidapi.com/news",
-        headers: {
-            "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-            "X-RapidAPI-Host": "ny-times-news-titles-and-urls.p.rapidapi.com",
-        },
-    };
 
-    const [news, setNews] = useState("");
+export default function News() {
+    const [news, setNews] = useState<any>("");
 
     useEffect(() => {
-        if (news !== "") return;
         const getNews = async () => {
-            const response = await axios.request(options);
-            console.log(response.data.world);
+            const url = `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${
+                new Date().getMonth() + 1
+            }/${new Date().getDate()}`;
 
-            setNews(response.data.world[0].title);
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: process.env.REACT_APP_WIKI_KEY,
+                    "Api-User-Agent": "Mosaic theengineermachine@gmail.com",
+                },
+            }).then((response) => response.json());
+
+            let random = getRandomNum();
+
+            while (random > response.events.length) random = getRandomNum();
+            setNews(response.events[random]);
         };
         getNews();
-    });
+    }, []);
+
+    const getRandomNum = () => {
+        return Math.trunc(Math.random() * 10);
+    };
 
     return (
         <>
@@ -33,9 +38,10 @@ export default function News() {
                     marginTop: "-.2em",
                     borderRadius: ".2em",
                     backgroundColor: "rgb(236, 74, 74)",
+                    fontSize: "1.9em",
                 }}
             >
-                News 📰
+                Today in History 📰
             </p>
             <p
                 className="WidgetDescription"
@@ -45,7 +51,7 @@ export default function News() {
                     left: "2%",
                 }}
             >
-                {news}
+                {news.text} - {news.year}
             </p>
         </>
     );
