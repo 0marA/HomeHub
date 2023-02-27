@@ -3,11 +3,8 @@ import Spotify from "./Spotify";
 export default function SpotifyAuthBase() {
     useEffect(() => {
         localStorage.setItem("Time", Date.now() + "");
-        if (Date.now() - parseFloat(localStorage.getItem("Time")) > 1.8e6) {
-            if (localStorage.getItem("startedAuthProcess") === "true") return;
-            if (localStorage.getItem("startedAuthProcess") !== "true") {
-                startAuthFlow();
-            }
+        if (Date.now() - parseFloat(localStorage.getItem("Time")) > 30000) {
+            startAuthFlow();
         }
     });
 
